@@ -318,7 +318,7 @@ int main()
 
  - Tính trừu tượng (Abstraction): trong code này thể hiện ở việc tạo các lớp NhanVienSuaOngNuoc, NhanVienGiaoHang, và NhanVienXeOmCongNghe đại diện cho các loại nhân viên khác nhau, và chúng đều có các phương thức chung như Nhap(), Xuat(), và Tinh_Tien_Luong() có thể sử dụng chúng để thực hiện các nhiệm vụ riêng biệt.
  - Tính đóng gói (Encapsulation) trong code nay thể hiện ở việc sử dụng các phạm vi truy cập (private, public) cho các thành phần của một lớp (đặc trưng quan trọng nhất của OOP), các thuộc tính properties hoten, tuoi, gioi_tinh, là private.
-Cụ thể:
+   + Cụ thể:
 private:
 string hoten;
 int tuoi;
@@ -329,7 +329,7 @@ float chieu_cao;
 float can_nang;
 trong các lớp NhanVienSuaOngNuoc, NhanVienGiaoHang, và NhanVienXeOmCongNghe. Điều này đảm bảo rằng các thuộc tính này chỉ có thể truy cập từ bên trong lớp. 
 Ngoài ra, các phương thức method đặt ở phạm vi public (tương tự struct)
-Cụ thể
+  + Cụ thể
 public:
 void Nhap();
 void Xuat();
