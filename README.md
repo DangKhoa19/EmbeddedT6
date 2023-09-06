@@ -1,13 +1,13 @@
 # EmbeddedT6
 ## C++
  * Class là một mô tả, một bản thiết kế hoặc một khung cho việc tạo ra các "đối tượng" (objects) cụ thể. Class định nghĩa các thuộc tính (properties) và hành vi (method) mà các đối tượng (object) của class đó sẽ có; class đóng vai trò như 1 kiểu dữ liệu do người dùng từ định nghĩa (gần giống như struct, khác struct có chia ra các cấp độ truy cập để bảo vệ dữ liệu).
- * Đối tượng(object) là thưc thể hữu hình, thể hiện cụ thể của class.
+ * Đối tượng (object) là thưc thể hữu hình, thể hiện cụ thể của class.
    Ví dụ 1: bản thiết kế là class, ngôi nhà là object, từ 1 bản thiết kế có thể sinh ra nhiều ngôi nhà
- * Thuộc tính(properties) là đặc điểm, đặc trưng, tính chất của class. Thuộc tính là tính từ.
+ * Thuộc tính (properties) là đặc điểm, đặc trưng, tính chất của class. Thuộc tính là tính từ.
  * Phương thức (method) hành động hành vi của class. Phương thức là động từ.
    Ví dụ 2: class là động vật, object là sư tử thuộc tính (properties) là cân nặng, giới tính, chiều cao
 Ba mức độ truy cập dữ liệu trong class:
- * Public: những thuộc tính(properties) hay phương thức(method) được khái báo với từ khóa này sẽ có phạm vi hoạt động bên trong bên ngoài class và trên toàn bộ chương trình
+ * Public: những thuộc tính (properties) hay phương thức(method) được khái báo với từ khóa này sẽ có phạm vi hoạt động bên trong bên ngoài class và trên toàn bộ chương trình
  - Private: những thuộc tính hay phương thức được khai báo với từ khóa này có phạm vi hoạt động chỉ bên trong class nội tại.
  - Protected: những thuộc tính hay phương thức được khai báo với từ khóa này có phạm vi hoạt động chỉ bên trong class nội tại và class kế thừa từ nó.
 
@@ -26,14 +26,14 @@ using namespace std;
    class sinhvien
      {
    //thuộc tính (properties) đặc trưng của 1 thực thể, được bảo vệ ở private
-private:
-string hoten;
-string maso;
-float diem_toan;
-float diem_ly;
+   private:
+   string hoten;
+   string maso;
+   float diem_toan;
+   float diem_ly;
 //phương thức (method) hành vi, hành động thể hiện ra ngoài
     
-public:
+   public:
 
     void Nhap_Thong_Tin();   //{có thể định nghĩa bên trong class( không khuyến khích)   }
     void Xuat_Thong_Tin();
