@@ -696,6 +696,39 @@ kế thừa lại thì các thuộc tính lớp cha sẽ để phạm vi
   + Cú pháp: <virtual> <Kiểu Dữ Liệu><Tên phương thức>(Các tham số truyền vào nếu có)=0.
   + Như vậy khi nào dùng ảo, khi nào dùng thuần ảo: Khi ở lớp cha có thông tin để tính toán => dùng ảo; còn khi không có thông tin tính toán ta dùng thuần ảo.
 
+Ví dụ:
+Phuong thức ảo:
+#include<iostream>
+using namespace std;
+class A
+{
+
+    public:
+    void Xuat()
+    {
+        cout<<"Ai keu toi day co A day !!!";
+    }
+};
+
+class B: public A
+{
+
+    public:
+    void Xuat()
+    {
+        cout<<"Ai keu toi day co B day !!!";
+    }
+};
+
+int main()
+{
+
+    A *x = new B;
+    x->Xuat();
+    system("pause");
+    return 0;
+}
+
 
  
   
