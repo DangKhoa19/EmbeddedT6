@@ -730,6 +730,185 @@ int main()
 }
 
 
+
+
+
+
+
+
+
+ - Vector:
+  +
+
+Ví dụ:
+#include<iostream>
+#include<vector>
+using namespace std;
+
+void Xuat_mang_vector(vector<int>arr)
+//vector<int> arr;: Tạo một vector rỗng có tên arr để lưu trữ các số nguyên.
+{
+
+    for(int i=0; i<arr.size();i++)
+    {
+        cout<<arr.at(i)<<"  ";
+        // Xuất phần tử tại vị trí i
+    }
+}
+
+int main()
+{
+
+    vector<int>arr;
+    for(int i=0; i<5;i++)//Vòng lặp này thêm 5 phần tử vào vector arr với giá trị từ 0 đến 4.
+    {
+        arr.push_back(i);
+        //Thêm phần tử i vào cuối vector
+    }
+    cout<<"\n\n\t\t XUAT MANG\n";
+    Xuat_mang_vector(arr);//gọi hàm để in ra các phần tử trong vector arr.
+    cout << "\nKICH THUOC THUC SU CUA MANG VECTOR HIEN TAI: " << arr.capacity();
+    // In ra kích thước thực sự của vector arr bằng cách sử dụng arr.capacity(). (số phần tử)
+    cout << "\nKICH THUOC THUC SU CUA MANG VECTOR HIEN TAI (byte): " << arr.capacity() * sizeof(int);
+    // In ra kích thước thực sự của vector arr bằng cách sử dụng arr.capacity(). (byte)
+
+    system("pause");
+    return 0;
+}
+
+Kết quả:XUAT MANG
+0  1  2  3  4
+KICH THUOC THUC SU CUA MANG VECTOR HIEN TAI: 8
+KICH THUOC THUC SU CUA MANG VECTOR HIEN TAI (byte): 32
+Press any key to continue . . .
+
+#include<iostream>
+#include<vector>
+using namespace std;
+
+void Xuat_mang_vector(vector<int>arr)
+//vector<int> arr;: Tạo một vector rỗng có tên arr để lưu trữ các số nguyên.
+{
+
+    for(int i=0; i<arr.size();i++)
+    {
+        cout<<arr.at(i)<<"  ";
+        // Xuất phần tử tại vị trí i
+    }
+}
+
+int main()
+{
+
+    vector<int>arr;
+    for(int i=0; i<5;i++)//Vòng lặp này thêm 5 phần tử vào vector arr với giá trị từ 0 đến 4.
+    {
+        arr.push_back(i);
+        
+        //Thêm phần tử i vào cuối vector
+    }
+
+    cout<<"\nPHAN TU DAU TIEN CUA MANG:\t"<<arr.front();
+    cout<<"\nPHAN TU CUOI CUNG CUA MANG:\t"<<arr.back();
+
+    cout<<"\n\n\t\t XUAT MANG\n";
+    Xuat_mang_vector(arr);//gọi hàm để in ra các phần tử trong vector arr.
+
+    arr.pop_back(); //hàm xóa phần tử cuối cùng của mảng vector
+    cout<<"\n\n\t\t XUAT MANG\n";
+    Xuat_mang_vector(arr);//gọi hàm để in ra các phần tử trong vector arr.
+
+    cout << "\nKICH THUOC THUC SU CUA MANG VECTOR HIEN TAI: " << arr.capacity();
+    // In ra kích thước thực sự của vector arr bằng cách sử dụng arr.capacity(). (số phần tử)
+    cout << "\nKICH THUOC THUC SU CUA MANG VECTOR HIEN TAI (byte): " << arr.capacity() * sizeof(int);
+    // In ra kích thước thực sự của vector arr bằng cách sử dụng arr.capacity(). (byte)
+    cout<<"\n SO LUONG PHAN TU CO THE CHUA DUOC TOI DA CUA VECTOR:  "<<arr.max_size();
+    system("pause");
+    return 0;
+}
+
+kẾT QUẢ PHAN TU DAU TIEN CUA MANG:      0
+PHAN TU CUOI CUNG CUA MANG:     4
+                 XUAT MANG
+0  1  2  3  4
+                 XUAT MANG
+0  1  2  3
+KICH THUOC THUC SU CUA MANG VECTOR HIEN TAI: 8
+KICH THUOC THUC SU CUA MANG VECTOR HIEN TAI (byte): 32
+ SO LUONG PHAN TU CO THE CHUA DUOC TOI DA CUA VECTOR:  1073741823
+
+#include<iostream>
+#include<vector>
+using namespace std;
+
+void Xuat_mang_vector(vector<int>arr)
+//vector<int> arr;: Tạo một vector rỗng có tên arr để lưu trữ các số nguyên.
+{
+
+    for(int i=0; i<arr.size();i++)
+    {
+        cout<<arr.at(i)<<"  ";
+        // Xuất phần tử tại vị trí i
+    }
+}
+
+int main()
+{
+
+    vector<int>arr;
+    for(int i=0; i<5;i++)//Vòng lặp này thêm 5 phần tử vào vector arr với giá trị từ 0 đến 4.
+    {
+        arr.push_back(i);
+        
+        //Thêm phần tử i vào cuối vector
+    }
+
+    cout<<"\nPHAN TU DAU TIEN CUA MANG:\t"<<arr.front();
+    cout<<"\nPHAN TU CUOI CUNG CUA MANG:\t"<<arr.back();
+
+    cout<<"\n\n\t\t XUAT MANG DA THEM 5 PHAN TU\n";
+    Xuat_mang_vector(arr);//gọi hàm để in ra các phần tử trong vector arr.
+
+    arr.pop_back(); //hàm xóa phần tử cuối cùng của mảng vector
+    cout<<"\n\n\t\t XUAT MANG DA XOA PHAN TU CUOI\n";
+    Xuat_mang_vector(arr);//gọi hàm để in ra các phần tử trong vector arr.
+
+    arr.erase(arr.begin()+2);// xóa phần tử tại vị trí thứ 3
+    cout<<"\n\n\t\t XUAT MANG DA XOA PHAN TU THU 3\n";
+    Xuat_mang_vector(arr);//gọi hàm để in ra các phần tử trong vector arr.
+
+    arr.insert(arr.begin()+2,69);// thêm phần tử tại vị trí thứ 3
+    cout<<"\n\n\t\t XUAT MANG DA THEM PHAN TU O VI TRI THU 3\n";
+    Xuat_mang_vector(arr);//gọi hàm để in ra các phần tử trong vector arr.
+
+    cout << "\nKICH THUOC THUC SU CUA MANG VECTOR HIEN TAI: " << arr.capacity();
+    // In ra kích thước thực sự của vector arr bằng cách sử dụng arr.capacity(). (số phần tử)
+    cout << "\nKICH THUOC THUC SU CUA MANG VECTOR HIEN TAI (byte): " << arr.capacity() * sizeof(int);
+    // In ra kích thước thực sự của vector arr bằng cách sử dụng arr.capacity(). (byte)
+    cout<<"\n SO LUONG PHAN TU CO THE CHUA DUOC TOI DA CUA VECTOR:  "<<arr.max_size();
+
+
+    vector<int>x;
+    for(int i=10; i<15;i++)//Vòng lặp này thêm 5 phần tử vào vector arr với giá trị từ 0 đến 4.
+    {
+        x.push_back(i);
+        
+        //Thêm phần tử i vào cuối vector
+    }
+
+    arr.swap(x); //hoán đổi 2 mảng vector cho nhau
+
+    cout<<"\n\n\t\t XUAT MANG arr sau khi hoan doi\n";
+    Xuat_mang_vector(arr);//gọi hàm để in ra các phần tử trong vector arr.
+    cout<<"\n\n\t\t XUAT MANG x sau khi hoan doi\n";
+    Xuat_mang_vector(x);//gọi hàm để in ra các phần tử trong vector arr.
+    system("pause");
+    return 0;
+}
+
+
+
+
  
   
 
