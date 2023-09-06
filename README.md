@@ -1,24 +1,24 @@
 # EmbeddedT6
 ## C++
- - Class là một mô tả, một bản thiết kế hoặc một khung cho việc tạo ra các "đối tượng" (objects) cụ thể. Class định nghĩa các thuộc tính (properties) và hành vi (method) mà các đối tượng (object) của class đó sẽ có; class đóng vai trò như 1 kiểu dữ liệu do người dùng từ định nghĩa (gần giống như struct, khác struct có chia ra các cấp độ truy cập để bảo vệ dữ liệu).
- - Đối tượng(object) là thưc thể hữu hình, thể hiện cụ thể của class.
+ * Class là một mô tả, một bản thiết kế hoặc một khung cho việc tạo ra các "đối tượng" (objects) cụ thể. Class định nghĩa các thuộc tính (properties) và hành vi (method) mà các đối tượng (object) của class đó sẽ có; class đóng vai trò như 1 kiểu dữ liệu do người dùng từ định nghĩa (gần giống như struct, khác struct có chia ra các cấp độ truy cập để bảo vệ dữ liệu).
+ * Đối tượng(object) là thưc thể hữu hình, thể hiện cụ thể của class.
    Ví dụ 1: bản thiết kế là class, ngôi nhà là object, từ 1 bản thiết kế có thể sinh ra nhiều ngôi nhà
- - Thuộc tính(properties) là đặc điểm, đặc trưng, tính chất của class. Thuộc tính là tính từ.
- - Phương thức (method) hành động hành vi của class. Phương thức là động từ.
+ * Thuộc tính(properties) là đặc điểm, đặc trưng, tính chất của class. Thuộc tính là tính từ.
+ * Phương thức (method) hành động hành vi của class. Phương thức là động từ.
    Ví dụ 2: class là động vật, object là sư tử thuộc tính (properties) là cân nặng, giới tính, chiều cao
 Ba mức độ truy cập dữ liệu trong class:
- - Public: những thuộc tính(properties) hay phương thức(method) được khái báo với từ khóa này sẽ có phạm vi hoạt động bên trong bên ngoài class và trên toàn bộ chương trình
+ * Public: những thuộc tính(properties) hay phương thức(method) được khái báo với từ khóa này sẽ có phạm vi hoạt động bên trong bên ngoài class và trên toàn bộ chương trình
  - Private: những thuộc tính hay phương thức được khai báo với từ khóa này có phạm vi hoạt động chỉ bên trong class nội tại.
  - Protected: những thuộc tính hay phương thức được khai báo với từ khóa này có phạm vi hoạt động chỉ bên trong class nội tại và class kế thừa từ nó.
 
 Các đặc trưng của OOP:
- - Tính đóng gói:
-   + Đặc trưng của phương pháp OOP, không cho phép người dùng hay các đối tượng truy xuất trực tiếp dữ liệu của lớp nội tại.
-   + Đặc điểm:
-     a) Tạo cơ chế ngăn ngừa việc gọi phương thức(method) của class này tác động hay truy xuất dữ liệu của đối tượng thuộc về lớp khác.
-     b) Người lập trình có thể dựa vào cơ chế này ngăn ngừa việc gán giá trị không hợp lệ vào thành phần dữ liệu của mỗi đối tượng.
-     c) Không cho truy xuất 1 cách tùy tiện dữ liệu của lớp nội tại
-     d) Cơ chế đóng gói setter và setter giúp thay đổi dữ liệu và lấy dữ liệu, phá vỡ tính private. Cụ thể Setter là một phương thức
+ * Tính đóng gói:
+   - Đặc trưng của phương pháp OOP, không cho phép người dùng hay các đối tượng truy xuất trực tiếp dữ liệu của lớp nội tại.
+   - Đặc điểm:
+     + Tạo cơ chế ngăn ngừa việc gọi phương thức(method) của class này tác động hay truy xuất dữ liệu của đối tượng thuộc về lớp khác.
+     + Người lập trình có thể dựa vào cơ chế này ngăn ngừa việc gán giá trị không hợp lệ vào thành phần dữ liệu của mỗi đối tượng.
+     + Không cho truy xuất 1 cách tùy tiện dữ liệu của lớp nội tại
+     + Cơ chế đóng gói setter và setter giúp thay đổi dữ liệu và lấy dữ liệu, phá vỡ tính private. Cụ thể Setter là một phương thức
      được sử dụng để thay đổi giá trị của một thuộc tính, Getter là một phương thức được sử dụng để truy xuất giá trị của một thuộc tính. 
    Ví dụ: #include<iostream>
    using namespace std;
@@ -75,7 +75,6 @@ cout <<"Diem ly"<<diem_ly <<endl;
 
 int main()
 {
-
 sinhvien nguyenvana;
 cout<<"Nhap thong tin sinh vien:"<<endl;
 nguyenvana.Nhap_Thong_Tin();
@@ -87,11 +86,11 @@ nguyenvana.Xuat_Thong_Tin();
 return 0;
 }
 
-- Tính trừu tượng  (Abstraction):
-  + Trừu tượng hóa là quá trình đơn giản hóa 1 đối tượng object, xác định thuộc
+* Tính trừu tượng  (Abstraction):
+  - Trừu tượng hóa là quá trình đơn giản hóa 1 đối tượng object, xác định thuộc
   tính properties và phương thức method cần thiết của đối tượng object đó để đáp
   ứng yêu cầu cần thiết của chương trình tại thời điểm hiện tại.
-  + Quá trình trừu tượng hóa giúp sàng lọc ra những tính chất và hành vi cốt lõi
+  - Quá trình trừu tượng hóa giúp sàng lọc ra những tính chất và hành vi cốt lõi
   của đối tượng (object).
 
 
@@ -686,15 +685,15 @@ int main ()
 Trong code trên, Tính kế thừa thể hiện ở sử dụng phạm vi protected cho các thuộc tính để lớp con có thể kế thừa. Ở lớp con NhanVienSuaOngNuoc, NhanVienGiaoHang, và NhanVienXeOmCongNghe dùng kế thừa kiểu public từ lớp cha NhanVien, điều này cho phép 
 các lớp con kế thừa và cài đặt lại các phương thức khi cần.
 
- - Tính đa hình (Polymorphism):
-  + Phương thức ảo: Những phương thức ở lớp cha được khai báo với từ khóa virtual (ảo) - thì các class con kế thừa từ nó cũng sẽ cài đặt lại các method "trùng tên" của class cha - để cho phép các phương thức của class cha. Nếu như các method của class cha không có từ khóa virtual thì khi chúng ta cấp phát (new) ra đối tượng con bất kì thì nó mặc định chạy về phương thức trùng tên của class cha.
-  + Tác dụng của từ khóa virtual: nếu các phương thức của lớp cha có khai báo từ khóa virtual thì khi new ra đối tượng con nào đó bất kì thì khi đó sẽ chạy vào phương thức trùng tên của class con đó, nó cho ta gọi lại phương thức trùng tên của class con
-  + Cú pháp: <virtual> <Kiểu Dữ Liệu><Tên phương thức>(Các tham số truyền vào nếu có)
-  + Phương thức thuần ảo: Những phương thức sẽ được khai báo ở class cha - còn việc định nghĩa do các class con kế thừa nó đảm nhận
+ * Tính đa hình (Polymorphism):
+  - Phương thức ảo: Những phương thức ở lớp cha được khai báo với từ khóa virtual (ảo) - thì các class con kế thừa từ nó cũng sẽ cài đặt lại các method "trùng tên" của class cha - để cho phép các phương thức của class cha. Nếu như các method của class cha không có từ khóa virtual thì khi chúng ta cấp phát (new) ra đối tượng con bất kì thì nó mặc định chạy về phương thức trùng tên của class cha.
+  - Tác dụng của từ khóa virtual: nếu các phương thức của lớp cha có khai báo từ khóa virtual thì khi new ra đối tượng con nào đó bất kì thì khi đó sẽ chạy vào phương thức trùng tên của class con đó, nó cho ta gọi lại phương thức trùng tên của class con
+  - Cú pháp: <virtual> <Kiểu Dữ Liệu><Tên phương thức>(Các tham số truyền vào nếu có)
+  - Phương thức thuần ảo: Những phương thức sẽ được khai báo ở class cha - còn việc định nghĩa do các class con kế thừa nó đảm nhận
 kế thừa lại thì các thuộc tính lớp cha sẽ để phạm vi protected.
-  + Nếu ở class cha có khai báo các phương thức thuần ảo, thì quy tắc các lớp con nào kế thừa lại từ lớp cha đó thì các lớp con kế thừa từ lớp cha đó bắt buộc phải đi định nghĩa lại phương thức thuần ảo của class cha đó;  nếu lớp con không định nghĩa => sẽ bị lỗi.
-  + Cú pháp: <virtual> <Kiểu Dữ Liệu><Tên phương thức>(Các tham số truyền vào nếu có)=0.
-  + Như vậy khi nào dùng ảo, khi nào dùng thuần ảo: Khi ở lớp cha có thông tin để tính toán => dùng ảo; còn khi không có thông tin tính toán ta dùng thuần ảo.
+  - Nếu ở class cha có khai báo các phương thức thuần ảo, thì quy tắc các lớp con nào kế thừa lại từ lớp cha đó thì các lớp con kế thừa từ lớp cha đó bắt buộc phải đi định nghĩa lại phương thức thuần ảo của class cha đó;  nếu lớp con không định nghĩa => sẽ bị lỗi.
+  - Cú pháp: <virtual> <Kiểu Dữ Liệu><Tên phương thức>(Các tham số truyền vào nếu có)=0.
+  - Như vậy khi nào dùng ảo, khi nào dùng thuần ảo: Khi ở lớp cha có thông tin để tính toán => dùng ảo; còn khi không có thông tin tính toán ta dùng thuần ảo.
 
 Ví dụ:
 Phuong thức ảo:
@@ -730,16 +729,25 @@ int main()
 }
 
 
-
-
-
-
-
-
-
- - Vector:
-  +
-
+ * Vector: là mảng 1 chiều, cụ thể là mảng động;
+   - Vector không cần khai báo trước số lượng phần tử cần dùng, bởi vì nó được hỗ trợ cơ chế tự động thêm vào phần tử cuối (push_back())
+   - Tự động giải phóng vùng nhớ khi kết thúc chương trình.
+   - Thư viện <Vector> hỗ trợ thao tác thêm, xóa, tìm kiếm, sắp xếp.
+   - Khuyết điểm là tốn bộ nhớ hơn mảng tĩnh và động ( do cơ chế buộc tạo ra thêm vùng nhớ để quản lý chặt chẽ hơn)
+   - Một số hàm hỗ trợ:
+     + resize: 2 dạng
+       a) resize(<số lượng>): cấp phát mảng với số lượng phần tử cụ thể cho trước
+       b) resize(<số lượng>,<giá trị mặc định>): cấp phát mảng với số lượng phần tử cụ thể cho trước với giá trị các phần tử là giá trị
+mặc định.
+     + at(<chỉ số index>): truy xuất đến phần tử có chỉ số index trong vector.
+     + size(): trả về kích thước hiện tại của vector (số lượng các phần tử đang chứa trong vector).
+     + push_back(<phần tử có kdl bất kỳ>): thực hiện đưa phần tử vào cuối vector.
+     + pop_back(): xóa phần tử cuối cùng trong vector.
+     + front(): trả về phần tử đầu tiên trong mảng.
+     + back(): trả về phần tử cuối cùng trong mảng.
+     + capacity(): trả về kích thước thực sự vector đang lưu trữ (các phần tử). Nếu muốn xuất kích thước dung lượng thì soạn cũ pháp    capacity() * sizeof(KDL).
+     + max.size(): trả về kích thước tối đa có thể chứa các phần tử của các container.
+     + swap(<vector x>): hoán đổi các phần tử vector hiện và vector x cho nhau.
 Ví dụ:
 #include<iostream>
 #include<vector>
