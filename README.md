@@ -350,5 +350,356 @@ void Nhap();
 void Xuat();
 float Tinh_Tien_Luong();
 
+ - Tính trừu tượng (Inheritance):
+  + Kế thừa: Sự trao đổi thông tin từ thế hệ này sang thế hệ khác <=> Sự trao đổi thông tin từ class A sang class. Lớp cha mà có lớp con
+kế thừa lại thì các thuộc tính lớp cha sẽ để phạm vi protected.
+  + Protected: Khi ta khai báo các thuộc tính hay phương thức với từ khóa này thì nó sẽ có phạm vi hoạt động bên trong lớp đó và ở cácớp con kế thừa nó.
+  + Kế thừa là chúng ta đi kiếm những cái "CHUNG" - sau đó đem những cái "CHUNG" đó ra tạo thành 1 class.
+  + Khi class con kế thừa từ class cha, class cha có cái gì thì class con cũng có cái đó (trừ khi class cha dùng phạm vi private).
+  + Lợi ích: Tránh tình trạng dư thừa dữ liệu
 
+#include <iostream>
+#include <string>
+using namespace std;
+
+//Đây là khai báo một lớp cơ sở NhanVien, định nghĩa các thuộc tính và phương thức chung cho tất cả các nhân viên.
+class NhanVien
+{
+protected:
+
+    string hoten;
+    int tuoi;
+    string gioi_tinh;
+    string dia_chi;
+    string sdt;
+    float chieu_cao;
+    float can_nang;
+//protected: định nghĩa phạm vi truy cập của các thành viên được bảo vệ 
+//tức là chúng chỉ có thể truy cập từ các lớp con(dẫn xuất) của NhanVien.
+
+public:
+
+    void Nhap();
+    void Xuat();
+    //void Nhap(); và void Xuat(); là phương thức để nhập và xuất thông tin nhân viên.
+    float Tinh_Tien_Luong();
+    //float Tinh_Tien_Luong(); là một phương thức ảo sẽ được cài đặt trong các lớp con để tính lương của từng loại nhân viên.
+};
+
+void NhanVien::Nhap()
+{
+
+    cout << "Nhap ho ten: ";
+    cin.ignore();
+    getline(cin, hoten);
+    cout << "Nhap tuoi: ";
+    cin >> tuoi;
+    cout << "Nhap gioi tinh: ";
+    cin.ignore();
+    getline(cin, gioi_tinh);
+    cout << "Nhap dia chi: ";
+    cin.ignore();
+    getline(cin, dia_chi);
+    cout << "Nhap so dien thoai: ";
+    cin.ignore();
+    getline(cin, sdt);
+    cout << "Nhap chieu cao: ";
+    cin >> chieu_cao;
+    cout << "Nhap can nang: ";
+    cin >> can_nang;
+}
+
+void NhanVien::Xuat()
+{
+
+    cout << "ho ten: " << hoten << endl;
+    cout << "tuoi: " << tuoi << endl;
+    cout << " gioi tinh: " << gioi_tinh << endl;
+    cout << "dia chi: " << dia_chi << endl;
+    cout << " so dien thoai: " << sdt << endl;
+    cout << " chieu cao: " << chieu_cao << endl;
+    cout << " can nang: " << can_nang << endl;
+}
+
+float NhanVien::Tinh_Tien_Luong()
+{
+
+    return 0; // Không có lương mặc định
+}
+
+class NhanVienSuaOngNuoc : public NhanVien
+{
+private:
+
+    float so_h_sua;
+public:
+
+    void Nhap();
+    void Xuat();
+    float Tinh_Tien_Luong();
+};
+void NhanVienSuaOngNuoc::Nhap()
+{
+
+    NhanVien::Nhap();
+    cout << "Nhap so gio sua: ";
+    cin >> so_h_sua;
+}
+void NhanVienSuaOngNuoc::Xuat()
+{
+
+    NhanVien::Xuat();
+    cout << " so gio sua: " << so_h_sua << endl;
+}
+float NhanVienSuaOngNuoc::Tinh_Tien_Luong()
+{
+
+    return so_h_sua * 50000;
+}
+class NhanVienGiaoHang : public NhanVien
+{
+private:
+
+    int so_hang_giao;
+
+public:
+
+    void Nhap();
+    void Xuat();
+    float Tinh_Tien_Luong();
+};
+
+void NhanVienGiaoHang::Nhap()
+{
+
+    NhanVien::Nhap();
+    cout << "Nhap hang giao: ";
+    cin >> so_hang_giao;
+}
+
+void NhanVienGiaoHang::Xuat()
+{
+
+    NhanVien::Xuat();
+    cout << " so hang giao: " << so_hang_giao << endl;
+}
+float NhanVienGiaoHang::Tinh_Tien_Luong()
+{
+
+    return so_hang_giao * 50000;
+}
+class NhanVienXeOmCongNghe : public NhanVien
+{
+private:
+
+    float so_km;
+
+public:
+
+    void Nhap();
+    void Xuat();
+    float Tinh_Tien_Luong();
+};
+
+void NhanVienXeOmCongNghe::Nhap()
+{
+
+    NhanVien::Nhap();
+    cout << "Nhap km: ";
+    cin >> so_km;
+}
+
+void NhanVienXeOmCongNghe::Xuat()
+{
+
+    NhanVien::Xuat();
+    cout << " km: " << so_km << endl;
+}
+
+float NhanVienXeOmCongNghe::Tinh_Tien_Luong()
+{
+
+    return so_km * 34000;
+}
+
+void SapXepDanhSachNhanVienSuaOngNuocGiamDanTheoLuong(NhanVienSuaOngNuoc ds[], int n)
+{
+
+    for(int i=0;i<n;i++)
+    {
+        for(int j=n-1;j>i;j--)
+        {
+            if (ds[j].Tinh_Tien_Luong()<ds[j-1].Tinh_Tien_Luong())
+            {
+                  NhanVienSuaOngNuoc temp=ds[j];
+                  ds[j]=ds[j-1];
+                  ds[j-1]=temp;
+            }
+        }
+    }
+    // Xuất danh sách sau khi đã sắp xếp
+    cout << "\nDanh sach nhan vien sua ong nuoc giam dan theo luong:\n";
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Nhan vien " << i + 1 << " - Luong: " << ds[i].Tinh_Tien_Luong() << endl;
+        ds[i].Xuat();
+    }
+}
+
+float TinhTongTienLuongNhanVienSuaOngNuoc(NhanVienSuaOngNuoc ds[], int n)
+{
+
+    double sum = 0;
+    cout << "Tinh tong tien luong" << endl;
+    for (int i = 0; i < n; i++)
+    {
+        sum += ds[i].Tinh_Tien_Luong();
+    }
+    return sum;
+}
+
+float TinhTongTienLuongNhanVienGiaoHang(NhanVienGiaoHang ds[], int m)
+{
+
+    double sum = 0;
+    cout << "Tinh tong tien luong" << endl;
+    for (int i = 0; i < m; i++)
+    {
+        sum += ds[i].Tinh_Tien_Luong();
+    }
+    return sum;
+}
+float TinhTongTienLuongNhanVienXeOmCongNghe(NhanVienXeOmCongNghe ds[], int l)
+{
+
+    double sum = 0;
+    cout << "Tinh tong tien luong" << endl;
+    for (int i = 0; i < l; i++)
+    {
+        sum += ds[i].Tinh_Tien_Luong();
+    }
+    return sum;
+}
+
+void Menu(NhanVienSuaOngNuoc ds_nv_suaongnuoc[], NhanVienGiaoHang ds_nv_giaohang[], NhanVienXeOmCongNghe ds_nv_xeomcn[],int n,int m, int l)
+{
+
+    int luachon;
+    while (true) {
+        system("cls");
+        cout << "\n\n\t\t ====== CHUONG TRINH QUAN LY";
+        cout << "\n1. Nhap thong tin nhan vien sua ong nuoc";
+        cout << "\n2. Nhap thong tin nhan vien giao hang";
+        cout << "\n3. Nhap thong tin nhan vien xe om cong nghe";
+        cout << "\n4. Xuat thong tin nhan vien sua ong nuoc";
+        cout << "\n5. Xuat thong tin nhan vien giao hang";
+        cout << "\n6. Xuat thong tin nhan vien xe om cong nghe";
+        cout << "\n7. Xuat tong luong nhan vien";
+        cout << "\n8. Xuat danh sach nhan vien giam dan theo luong";        
+        cout << "\n0. KET THUC";
+        cout << "\n\n\t\t ====== KET THUC =====";
+
+        cout << "\nNhap lua chon: ";
+        cin >> luachon;
+        cin.ignore(); 
+
+        if (luachon == 1) {
+            NhanVienSuaOngNuoc nv_suaongnuoc;
+            cout << "\n\n\t\t NHAP THONG TIN NHAN VIEN SUA ONG NUOC \n";
+            nv_suaongnuoc.Nhap();
+            ds_nv_suaongnuoc[n] = nv_suaongnuoc;
+            n++;
+        } else if (luachon == 2) {
+            NhanVienGiaoHang nv_giaohang;
+            cout << "\n\n\t\t NHAP THONG TIN NHAN VIEN GIAO HANG \n";
+            nv_giaohang.Nhap();
+            ds_nv_giaohang[m] = nv_giaohang;
+            m++;
+        } else if (luachon == 3) {
+            NhanVienXeOmCongNghe nv_xeomcn;
+            cout << "\n\n\t\t NHAP THONG TIN NHAN VIEN XE OM CONG NGHE \n";
+            nv_xeomcn.Nhap();
+            ds_nv_xeomcn[l] = nv_xeomcn;
+            l++;
+        } else if (luachon == 4) {
+            cout << "\n\n\t\t XUAT THONG TIN NHAN VIEN SUA ONG NUOC \n";
+            for (int i = 0; i < n; i++) {
+                cout << "\n\n\t\t XUAT THONG TIN NHAN VIEN SUA ONG NUOC THU " << i + 1;
+                ds_nv_suaongnuoc[i].Xuat();
+            }
+            cout << "\n\n\t\t TINH TONG TIEN LUONG NHAN VIEN SUA ONG NUOC " << TinhTongTienLuongNhanVienSuaOngNuoc(ds_nv_suaongnuoc, n);
+            system("pause");
+        } else if (luachon == 5) {
+            cout << "\n\n\t\t XUAT THONG TIN NHAN VIEN GIAO HANG \n";
+            for (int i = 0; i < m; i++) {
+                cout << "\n\n\t\t XUAT THONG TIN NHAN VIEN GIAO HANG THU " << i + 1;
+                ds_nv_giaohang[i].Xuat();
+            }
+            cout << "\n\n\t\t TINH TONG TIEN LUONG NHAN VIEN GIAO HANG " << TinhTongTienLuongNhanVienGiaoHang(ds_nv_giaohang, m);
+            system("pause");
+        } else if (luachon == 6) {
+            cout << "\n\n\t\t XUAT THONG TIN NHAN VIEN XE OM CONG NGHE \n";
+            for (int i = 0; i < l; i++) {
+                cout << "\n\n\t\t XUAT THONG TIN NHAN VIEN XE OM CONG NGHE THU " << i + 1;
+                ds_nv_xeomcn[i].Xuat();
+            }
+            cout << "\n\n\t\t TINH TONG TIEN LUONG NHAN VIEN XE OM CONG NGHE " << TinhTongTienLuongNhanVienXeOmCongNghe(ds_nv_xeomcn, l);
+            system("pause");
+
+            
+        } 
+        
+        else if(luachon ==7)
+        {
+            cout<<"\n\n\t\t TONG TIEN PHAI TRA HANG THANG"<<TinhTongTienLuongNhanVienSuaOngNuoc(ds_nv_suaongnuoc, n)+ TinhTongTienLuongNhanVienGiaoHang(ds_nv_giaohang,m)+TinhTongTienLuongNhanVienXeOmCongNghe(ds_nv_xeomcn, l);
+        }
+         else if (luachon == 8)
+        {
+        cout << "\n\n\t\t DANH SACH NHAN VIEN SUA ONG NUOC GIAM DAN THEO LUONG\n";
+        SapXepDanhSachNhanVienSuaOngNuocGiamDanTheoLuong(ds_nv_suaongnuoc, n);
+        system("pause");
+        }
+        else if (luachon == 0) {
+            return; 
+        } else {
+            cout << "Lua chon khong hop le!";
+        }
+    }
+}
+
+int main ()
+{
+
+    NhanVienSuaOngNuoc ds_nv_suaongnuoc[100];//mảng 1 chiều nhân viên sửa ống nước, mỗi phần tử là 1 đối tượng giá trị
+    NhanVienGiaoHang ds_nv_giaohang[100];//mảng 1 chiều nhân viên giao hàng, mỗi phần tử là 1 đối tượng giá trị
+    NhanVienXeOmCongNghe ds_nv_xeomcn[100];//mảng 1 chiều nhân viên xe ôm công nghệ, mỗi phần tử là 1 đối tượng giá trị
+    int n=0;// số lượng nhân viên sửa ống nước
+    int m=0;// số lượng nhân viên giao hàng
+    int l=0;// số lượng nhân viên xe ôm công nghệ
+
+    Menu(ds_nv_suaongnuoc, ds_nv_giaohang, ds_nv_xeomcn, n, m, l);
+
+    system("pause");
+    return 0;
+}  
+
+Trong code trên, Tính kế thừa thể hiện ở sử dụng phạm vi protected cho các thuộc tính để lớp con có thể kế thừa. Ở lớp con NhanVienSuaOngNuoc, NhanVienGiaoHang, và NhanVienXeOmCongNghe dùng kế thừa kiểu public từ lớp cha NhanVien, điều này cho phép 
+các lớp con kế thừa và cài đặt lại các phương thức khi cần.
+
+ - Tính đa hình (Polymorphism):
+  + Phương thức ảo: Những phương thức ở lớp cha được khai báo với từ khóa virtual (ảo) - thì các class con kế thừa từ nó cũng sẽ cài đặt lại các method "trùng tên" của class cha - để cho phép các phương thức của class cha. Nếu như các method của class cha không có từ khóa virtual thì khi chúng ta cấp phát (new) ra đối tượng con bất kì thì nó mặc định chạy về phương thức trùng tên của class cha.
+  + Tác dụng của từ khóa virtual: nếu các phương thức của lớp cha có khai báo từ khóa virtual thì khi new ra đối tượng con nào đó bất kì thì khi đó sẽ chạy vào phương thức trùng tên của class con đó, nó cho ta gọi lại phương thức trùng tên của class con
+  + Cú pháp: <virtual> <Kiểu Dữ Liệu><Tên phương thức>(Các tham số truyền vào nếu có)
+  + Phương thức thuần ảo: Những phương thức sẽ được khai báo ở class cha - còn việc định nghĩa do các class con kế thừa nó đảm nhận
+kế thừa lại thì các thuộc tính lớp cha sẽ để phạm vi protected.
+  + Nếu ở class cha có khai báo các phương thức thuần ảo, thì quy tắc các lớp con nào kế thừa lại từ lớp cha đó thì các lớp con kế thừa từ lớp cha đó bắt buộc phải đi định nghĩa lại phương thức thuần ảo của class cha đó;  nếu lớp con không định nghĩa => sẽ bị lỗi.
+  + Cú pháp: <virtual> <Kiểu Dữ Liệu><Tên phương thức>(Các tham số truyền vào nếu có)=0.
+  + Như vậy khi nào dùng ảo, khi nào dùng thuần ảo: Khi ở lớp cha có thông tin để tính toán => dùng ảo; còn khi không có thông tin tính toán ta dùng thuần ảo.
+
+
+ 
   
+
+
+
+
