@@ -1,5 +1,5 @@
 # EmbeddedT6
-C++
+# C++
  - Class là một mô tả, một bản thiết kế hoặc một khung cho việc tạo ra các "đối tượng" (objects) cụ thể. Class định nghĩa các thuộc tính (properties) và hành vi (method) mà
    các đối tượng (object) của class đó sẽ có; class đóng vai trò như 1 kiểu dữ liệu do người dùng từ định nghĩa (gần giống như struct, khác struct có chia ra các cấp độ truy
    cập để bảo vệ dữ liệu).
