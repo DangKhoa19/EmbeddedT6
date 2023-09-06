@@ -728,6 +728,10 @@ int main()
     return 0;
 }
 
+* Function Template (khuôn mẫu hàm) là cách để định nghĩa một hàm tổng quát, mà có thể được sử dụng với nhiều kiểu dữ liệu khác nhau. Nó cho phép  viết một lần và sử dụng cho nhiều kiểu dữ liệu mà không cần viết lại mã hàm cho mỗi kiểu đó.
+
+
+
 
  * Vector: là mảng 1 chiều, cụ thể là mảng động;
    - Vector không cần khai báo trước số lượng phần tử cần dùng, bởi vì nó được hỗ trợ cơ chế tự động thêm vào phần tử cuối (push_back())
