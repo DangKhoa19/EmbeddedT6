@@ -105,6 +105,7 @@ using namespace std;
 class NhanVienSuaOngNuoc
 {
 private: 
+
     string hoten;
     int tuoi;
     string gioi_tinh;
@@ -115,9 +116,11 @@ private:
     float so_h_sua;
 
 public:
+
     // Phương thức nhập thông tin nhân viên sửa ống nước trong class
     void Nhap()
     {
+    
         cout << "Nhap ho ten: ";
         cin.ignore();
         getline(cin, hoten);
@@ -167,6 +170,7 @@ public:
 class NhanVienGiaoHang
 {
 private:
+
     string hoten;
     int tuoi;
     string gioi_tinh;
@@ -177,9 +181,11 @@ private:
     int so_hang_giao;
 
 public:
+
     // Phương thức nhập thông tin nhân viên giao hàng trong class
     void Nhap()
     {
+    
         cout << "Nhap ho ten: ";
         cin.ignore();
         getline(cin, hoten);
@@ -228,7 +234,9 @@ public:
 // Khai báo class nhân viên xe ôm công nghệ
 class NhanVienXeOmCongNghe
 {
+
 private:
+
     string hoten;
     int tuoi;
     string gioi_tinh;
@@ -238,10 +246,14 @@ private:
     float can_nang;
     float so_km;
 
+
 public:
+
     // Phương thức nhập thông tin nhân viên xe ôm công nghệ trong class
+    
     void Nhap()
     {
+    
         cout << "Nhap ho ten: ";
         cin.ignore();
         getline(cin, hoten);
@@ -287,8 +299,11 @@ public:
     ~NhanVienXeOmCongNghe() {}
 };
 
-int main()
+
+
+int main ()
 {
+
     NhanVienGiaoHang nv_giaohang;
     NhanVienSuaOngNuoc nv_suaongnuoc;
     NhanVienXeOmCongNghe nv_xeomcn;
@@ -329,7 +344,7 @@ float chieu_cao;
 float can_nang;
 trong các lớp NhanVienSuaOngNuoc, NhanVienGiaoHang, và NhanVienXeOmCongNghe. Điều này đảm bảo rằng các thuộc tính này chỉ có thể truy cập từ bên trong lớp. 
 Ngoài ra, các phương thức method đặt ở phạm vi public (tương tự struct)
-  + Cụ thể
+   + Cụ thể:
 public:
 void Nhap();
 void Xuat();
