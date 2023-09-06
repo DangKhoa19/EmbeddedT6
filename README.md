@@ -908,6 +908,261 @@ int main()
 
 
 
+Áp dụng vào bài toán nhân viên:
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+// Lớp cơ sở NhanVien định nghĩa các thuộc tính và phương thức chung cho tất cả các nhân viên.
+class NhanVien {
+protected:
+
+    string hoten;
+    int tuoi;
+    string gioi_tinh;
+    string dia_chi;
+    string sdt;
+    float chieu_cao;
+    float can_nang;
+public:
+
+    void Nhap();
+    void Xuat();
+    virtual float Tinh_Tien_Luong() = 0; // Hàm ảo để tính lương (phải được định nghĩa lại trong các lớp con).
+};
+
+// Hàm nhập thông tin nhân viên.
+void NhanVien::Nhap() {
+
+    cout << "Nhap ho ten: ";
+    cin.ignore();
+    getline(cin, hoten);
+    cout << "Nhap tuoi: ";
+    cin >> tuoi;
+    cout << "Nhap gioi tinh: ";
+    cin.ignore();
+    getline(cin, gioi_tinh);
+    cout << "Nhap dia chi: ";
+    cin.ignore();
+    getline(cin, dia_chi);
+    cout << "Nhap so dien thoai: ";
+    cin.ignore();
+    getline(cin, sdt);
+    cout << "Nhap chieu cao: ";
+    cin >> chieu_cao;
+    cout << "Nhap can nang: ";
+    cin >> can_nang;
+}
+
+// Hàm xuất thông tin nhân viên.
+void NhanVien::Xuat() {
+
+    cout << "Ho ten: " << hoten << endl;
+    cout << "Tuoi: " << tuoi << endl;
+    cout << "Gioi tinh: " << gioi_tinh << endl;
+    cout << "Dia chi: " << dia_chi << endl;
+    cout << "So dien thoai: " << sdt << endl;
+    cout << "Chieu cao: " << chieu_cao << endl;
+    cout << "Can nang: " << can_nang << endl;
+}
+
+// Lớp con NhanVienSuaOngNuoc kế thừa từ lớp NhanVien.
+class NhanVienSuaOngNuoc : public NhanVien {
+private:
+
+    float so_h_sua;
+
+public:
+
+    void Nhap();
+    void Xuat();
+    float Tinh_Tien_Luong();
+};
+
+// Hàm nhập thông tin nhân viên sửa ống nước.
+void NhanVienSuaOngNuoc::Nhap() {
+
+    NhanVien::Nhap();
+    cout << "Nhap so gio sua: ";
+    cin >> so_h_sua;
+}
+
+// Hàm xuất thông tin nhân viên sửa ống nước.
+void NhanVienSuaOngNuoc::Xuat() {
+
+    NhanVien::Xuat();
+    cout << "So gio sua: " << so_h_sua << endl;
+}
+
+// Hàm tính lương của nhân viên sửa ống nước.
+float NhanVienSuaOngNuoc::Tinh_Tien_Luong() {
+
+    return so_h_sua * 50000;
+}
+
+// Lớp con NhanVienGiaoHang kế thừa từ lớp NhanVien.
+class NhanVienGiaoHang : public NhanVien {
+private:
+
+    int so_hang_giao;
+public:
+
+    void Nhap();
+    void Xuat();
+    float Tinh_Tien_Luong();
+};
+
+// Hàm nhập thông tin nhân viên giao hàng.
+void NhanVienGiaoHang::Nhap() {
+
+    NhanVien::Nhap();
+    cout << "Nhap so hang giao: ";
+    cin >> so_hang_giao;
+}
+
+// Hàm xuất thông tin nhân viên giao hàng.
+void NhanVienGiaoHang::Xuat() {
+
+    NhanVien::Xuat();
+    cout << "So hang giao: " << so_hang_giao << endl;
+}
+
+// Hàm tính lương của nhân viên giao hàng.
+float NhanVienGiaoHang::Tinh_Tien_Luong() {
+
+    return so_hang_giao * 50000;
+}
+
+// Lớp con NhanVienXeOmCongNghe kế thừa từ lớp NhanVien.
+class NhanVienXeOmCongNghe : public NhanVien {
+private:
+
+    float so_km;
+
+public:
+
+    void Nhap();
+    void Xuat();
+    float Tinh_Tien_Luong();
+};
+
+// Hàm nhập thông tin nhân viên xe ôm công nghệ.
+void NhanVienXeOmCongNghe::Nhap() {
+
+    NhanVien::Nhap();
+    cout << "Nhap km: ";
+    cin >> so_km;
+}
+
+// Hàm xuất thông tin nhân viên xe ôm công nghệ.
+void NhanVienXeOmCongNghe::Xuat() {
+
+    NhanVien::Xuat();
+    cout << "Km: " << so_km << endl;
+}
+
+// Hàm tính lương của nhân viên xe ôm công nghệ.
+float NhanVienXeOmCongNghe::Tinh_Tien_Luong() {
+    return so_km * 34000;
+}
+
+// Hàm tính tổng tiền lương của danh sách nhân viên.
+float TinhTongTienLuong(vector<NhanVien*>& ds) {
+
+    double sum = 0;
+    for (NhanVien* nv : ds) {
+        sum += nv->Tinh_Tien_Luong();
+    }
+    return sum;
+}
+
+// Hàm sắp xếp danh sách nhân viên theo thứ tự giảm dần theo lương.
+void SapXepDanhSachNhanVienGiamDanTheoLuong(vector<NhanVien*>& ds) {
+
+    for (size_t i = 0; i < ds.size(); i++) {
+        for (size_t j = ds.size() - 1; j > i; j--) {
+            if (ds[j]->Tinh_Tien_Luong() < ds[j - 1]->Tinh_Tien_Luong()) {
+                swap(ds[j], ds[j - 1]);
+            }
+        }
+    }
+}
+
+// Hàm hiển thị menu và quản lý chương trình.
+void Menu(vector<NhanVien*>& ds_nv) {
+
+    int luachon;
+    while (true) {
+        system("cls");
+        cout << "\n\n\t\t ====== CHUONG TRINH QUAN LY";
+        cout << "\n1. Nhap thong tin nhan vien sua ong nuoc";
+        cout << "\n2. Nhap thong tin nhan vien giao hang";
+        cout << "\n3. Nhap thong tin nhan vien xe om cong nghe";
+        cout << "\n4. Xuat thong tin nhan vien";
+        cout << "\n5. Xuat tong luong nhan vien";
+        cout << "\n6. Xuat danh sach nhan vien giam dan theo luong";
+        cout << "\n0. KET THUC";
+        cout << "\n\n\t\t ====== KET THUC =====";
+
+        cout << "\nNhap lua chon: ";
+        cin >> luachon;
+        cin.ignore();
+
+        if (luachon == 1) {
+            NhanVienSuaOngNuoc* nv_suaongnuoc = new NhanVienSuaOngNuoc;
+            cout << "\n\n\t\t NHAP THONG TIN NHAN VIEN SUA ONG NUOC \n";
+            nv_suaongnuoc->Nhap();
+            ds_nv.push_back(nv_suaongnuoc);
+        } else if (luachon == 2) {
+            NhanVienGiaoHang* nv_giaohang = new NhanVienGiaoHang;
+            cout << "\n\n\t\t NHAP THONG TIN NHAN VIEN GIAO HANG \n";
+            nv_giaohang->Nhap();
+            ds_nv.push_back(nv_giaohang);
+        } else if (luachon == 3) {
+            NhanVienXeOmCongNghe* nv_xeomcn = new NhanVienXeOmCongNghe;
+            cout << "\n\n\t\t NHAP THONG TIN NHAN VIEN XE OM CONG NGHE \n";
+            nv_xeomcn->Nhap();
+            ds_nv.push_back(nv_xeomcn);
+        } else if (luachon == 4) {
+            cout << "\n\n\t\t XUAT THONG TIN NHAN VIEN \n";
+            for (NhanVien* nv : ds_nv) {
+                nv->Xuat();
+            }
+            system("pause");
+        } else if (luachon == 5) {
+            cout << "\n\n\t\t TONG TIEN PHAI TRA HANG THANG " << TinhTongTienLuong(ds_nv) << endl;
+            system("pause");
+        } else if (luachon == 6) {
+            cout << "\n\n\t\t DANH SACH NHAN VIEN GIAM DAN THEO LUONG\n";
+            SapXepDanhSachNhanVienGiamDanTheoLuong(ds_nv);
+            for (NhanVien* nv : ds_nv) {
+                cout << "Luong: " << nv->Tinh_Tien_Luong() << endl;
+                nv->Xuat();
+            }
+            system("pause");
+        } else if (luachon == 0) {
+            return;
+        } else {
+            cout << "Lua chon khong hop le!";
+        }
+    }
+
+    // Giải phóng bộ nhớ của các đối tượng nhân viên khi kết thúc chương trình.
+    for (NhanVien* nv : ds_nv) {
+        delete nv;
+    }
+}
+
+int main() {
+
+    vector<NhanVien*> ds_nv; // Sử dụng vector để quản lý danh sách nhân viên.
+    Menu(ds_nv);
+
+    system("pause");
+    return 0;
+}
 
  
   
