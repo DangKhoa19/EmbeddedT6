@@ -20,7 +20,8 @@ Các đặc trưng của OOP:
      + Không cho truy xuất 1 cách tùy tiện dữ liệu của lớp nội tại
      + Cơ chế đóng gói setter và setter giúp thay đổi dữ liệu và lấy dữ liệu, phá vỡ tính private. Cụ thể Setter là một phương thức
      được sử dụng để thay đổi giá trị của một thuộc tính, Getter là một phương thức được sử dụng để truy xuất giá trị của một thuộc tính. 
-   Ví dụ: #include<iostream>
+   Ví dụ: 
+   #include<iostream>
    using namespace std;
 
    class sinhvien
@@ -85,6 +86,7 @@ cout<<"Xuat thong tin sinh vien:"<<endl;
 nguyenvana.Xuat_Thong_Tin();
 return 0;
 }
+
 
 * Tính trừu tượng  (Abstraction):
   - Trừu tượng hóa là quá trình đơn giản hóa 1 đối tượng object, xác định thuộc
