@@ -24,13 +24,16 @@ Ví dụ:
 #include<iostream>
 using namespace std;
    class sinhvien
+    
      {
    //thuộc tính (properties) đặc trưng của 1 thực thể, được bảo vệ ở private
+
    private:
    string hoten;
    string maso;
    float diem_toan;
    float diem_ly;
+   
 //phương thức (method) hành vi, hành động thể hiện ra ngoài
     
    public:
@@ -49,6 +52,7 @@ hoten = HOTEN;
 }
     };
 // hàm tạo và hàm hủy
+
 sinhvien();
 ~sinhvien();
 void sinhvien::Nhap_Thong_Tin()
@@ -68,14 +72,17 @@ cin>>diem_ly;
 }
 void sinhvien::Xuat_Thong_tin()
 {
+
 cout <<"Ho ten"<<hoten <<endl;
 cout << "\nMa so: " << maso ;
 cout <<"Diem toan"<<diem_toan <<endl;
 cout <<"Diem ly"<<diem_ly <<endl;
+
 }
 
 int main()
 {
+
 sinhvien nguyenvana;
 cout<<"Nhap thong tin sinh vien:"<<endl;
 nguyenvana.Nhap_Thong_Tin();
