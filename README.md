@@ -737,9 +737,6 @@ int main()
 
 * Function Template (khuôn mẫu hàm) là cách để định nghĩa một hàm tổng quát, mà có thể được sử dụng với nhiều kiểu dữ liệu khác nhau. Nó cho phép  viết một lần và sử dụng cho nhiều kiểu dữ liệu mà không cần viết lại mã hàm cho mỗi kiểu đó.
 
-
-
-
  * Vector: là mảng 1 chiều, cụ thể là mảng động;
    - Vector không cần khai báo trước số lượng phần tử cần dùng, bởi vì nó được hỗ trợ cơ chế tự động thêm vào phần tử cuối (push_back())
    - Tự động giải phóng vùng nhớ khi kết thúc chương trình.
@@ -1183,8 +1180,169 @@ int main() {
     return 0;
 }
 
- 
+* List:
+
+
+* Hàm Lamda:
+   - Khái niệm: 
+   - Cú pháp: [capture clause] (parameters) -> return-type {
+               Định nghĩa của lambda function
+              }
   
+phần [] được gọi là "capture clause" và được sử dụng để xác định cách các biến từ phạm vi bên ngoài sẽ được sử dụng bên trong lambda function. 
+Phần [] này có thể chứa các chữ cái, ký tự đặc biệt và các dấu phân cách để chỉ định việc capture biến.
+
+Dưới đây là một số cách sử dụng phần capture clause:
+
+[]: Không capture bất kỳ biến nào từ phạm vi bên ngoài. Lambda chỉ sử dụng các biến được truyền vào bên trong nó.
+
+#include <iostream>
+int main() 
+{
+
+    int x = 5;
+    int y = 10;
+
+    auto lambda = []() {
+        return 42; // Lambda không sử dụng x và y từ  bên ngoài
+    };
+
+    std::cout << lambda() << std::endl;
+
+    return 0;
+}
+
+
+[var]: Capture biến var theo cách sao chép (by value), nghĩa là lambda sẽ sử dụng một bản sao của biến var.
+
+#include <iostream>
+using namespace std;
+int main() {
+    int x = 5;
+
+    auto lambda = [x]() {
+        return x * 2; // Lambda sử dụng x được sao chép từ phạm vi bên ngoài
+    };
+
+    cout << lambda() <<endl;
+
+    return 0;
+}
+
+
+[&var]: Capture biến var theo cách tham chiếu (by reference), nghĩa là lambda sẽ sử dụng biến var gốc và thay đổi sẽ ảnh hưởng đến biến bên ngoài.
+
+#include <iostream>
+using namespace std;
+int main() {
+    int x = 5;
+
+    auto lambda = [&x]() {
+        return x * 2; 
+        // Lambda dùng x thông qua tham chiếu
+    };
+
+    cout << lambda() << endl;
+
+    return 0;
+}
+
+
+[=]: Capture tất cả các biến từ phạm vi bên ngoài theo cách sao chép. Lambda sẽ có truy cập chỉ đọc đến các biến này.
+
+#include <iostream>
+using namespace std;
+int main() {
+    int x = 5;
+    int y = 10;
+
+    auto lambda = [=]() {
+        return x + y; 
+        // Lambda sử dụng x và y được sao chép từ phạm vi bên ngoài
+    };
+
+    std::cout << lambda() << std::endl;
+
+    return 0;
+}
+
+[&]: Capture tất cả các biến từ phạm vi bên ngoài theo cách tham chiếu. Lambda có truy cập đọc và ghi đến các biến này.
+#include <iostream>
+using namespace std;
+int main() {
+    int x = 5;
+    int y = 10;
+
+    auto lambda = [&]() {
+        return x + y; // Lambda sử dụng x và y thông qua tham chiếu
+    };
+
+    cout << lambda() << endl;
+
+    return 0;
+}
+
+
+[=, &var]: Kết hợp cả hai cách capture, lambda sẽ capture tất cả biến từ phạm vi bên ngoài theo cách sao chép, nhưng ngoại trừ biến var sẽ được capture theo cách tham chiếu.
+#include <iostream>
+using namespace std;
+int main() {
+    int x = 5;
+    int y = 10;
+
+    auto lambda = [=, &y]() {
+        return x + y; // Lambda sử dụng x được sao chép và y thông qua tham chiếu
+    };
+
+    cout << lambda() << endl;
+
+    return 0;
+}
+
+[var1, var2]: Capture các biến cụ thể var1 và var2 theo cách sao chép.
+#include <iostream>
+using namespace std;
+int main() {
+    int x = 5;
+    int y = 10;
+
+    auto lambda = [x, y](int a, int b) {
+        return x * y+a+b; 
+        // Lambda chỉ sử dụng x và y được sao chép từ phạm vi bên ngoài
+    };
+
+   cout << lambda(1,2) << endl;
+
+    return 0;
+}
+
+
+[&, var1]: Capture tất cả các biến theo cách tham chiếu, ngoại trừ biến var1 sẽ được capture theo cách sao chép.
+#include <iostream>
+using namespace std;
+int main() {
+    int x = 5;
+    int y = 10;
+
+    auto lambda = [&, x]() {
+        return x + y; 
+        // Lambda dùng x được sao chép và y thông qua tham chiếu
+    };
+
+    cout << lambda() << endl;
+
+    return 0;
+}
+
+
+ - 
+   - Khuyết điểm là tốn bộ nhớ hơn mảng tĩnh và động ( do cơ chế buộc tạo ra thêm vùng nhớ để quản lý chặt chẽ hơn)
+   - Một số hàm hỗ trợ:
+     + resize: 2 dạng
+       a) 
+  
+  ![image](https://github.com/DangKhoa19/EmbeddedT6/assets/136158694/c7e0eb0f-635d-4065-a1ce-a864cd9d5bdc)
+
 
 
 
