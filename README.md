@@ -47,6 +47,7 @@ using namespace std;
 
     void Nhap_Thong_Tin();   //{có thể định nghĩa bên trong class( không khuyến khích)   }
     void Xuat_Thong_Tin();
+    
    // Cơ chế đóng gói setter (trình ghi) và getter(trình đọc)
    
    string Getter_HoTen()
@@ -74,7 +75,9 @@ void sinhvien::Nhap_Thong_Tin()
 
 cout<<"\nNhap Ho ten";
 
-getline(cin, hoten); //gọi thuộc tính hoten trong class nội tại sinhvien
+getline(cin, hoten); 
+
+//gọi thuộc tính hoten trong class nội tại sinhvien
 
 cout<<"Nhap ma so sinh vien";
 
@@ -88,7 +91,9 @@ cout<<"Nhap diem ly";
 
 cin>>diem_ly; 
 }
+
 void sinhvien::Xuat_Thong_tin()
+
 {
 
 cout <<"Ho ten"<<hoten <<endl;
