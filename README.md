@@ -1197,7 +1197,9 @@ Dưới đây là một số cách sử dụng phần capture clause:
 []: Không capture bất kỳ biến nào từ phạm vi bên ngoài. Lambda chỉ sử dụng các biến được truyền vào bên trong nó.
 
 #include <iostream>
+
 int main() 
+
 {
 
     int x = 5;
@@ -1216,7 +1218,9 @@ int main()
 [var]: Capture biến var theo cách sao chép (by value), nghĩa là lambda sẽ sử dụng một bản sao của biến var.
 
 #include <iostream>
+
 using namespace std;
+
 int main() {
 
     int x = 5;
@@ -1234,7 +1238,9 @@ int main() {
 [&var]: Capture biến var theo cách tham chiếu (by reference), nghĩa là lambda sẽ sử dụng biến var gốc và thay đổi sẽ ảnh hưởng đến biến bên ngoài.
 
 #include <iostream>
+
 using namespace std;
+
 int main() {
 
     int x = 5;
@@ -1253,7 +1259,9 @@ int main() {
 [=]: Capture tất cả các biến từ phạm vi bên ngoài theo cách sao chép. Lambda sẽ có truy cập chỉ đọc đến các biến này.
 
 #include <iostream>
+
 using namespace std;
+
 int main() {
 
     int x = 5;
@@ -1270,8 +1278,11 @@ int main() {
 }
 
 [&]: Capture tất cả các biến từ phạm vi bên ngoài theo cách tham chiếu. Lambda có truy cập đọc và ghi đến các biến này.
+
 #include <iostream>
+
 using namespace std;
+
 int main() {
 
     int x = 5;
@@ -1288,8 +1299,11 @@ int main() {
 
 
 [=, &var]: Kết hợp cả hai cách capture, lambda sẽ capture tất cả biến từ phạm vi bên ngoài theo cách sao chép, nhưng ngoại trừ biến var sẽ được capture theo cách tham chiếu.
+
 #include <iostream>
+
 using namespace std;
+
 int main() 
 {
 
@@ -1305,8 +1319,11 @@ int main()
 }
 
 [var1, var2]: Capture các biến cụ thể var1 và var2 theo cách sao chép.
+
 #include <iostream>
+
 using namespace std;
+
 int main() {
 
     int x = 5;
@@ -1322,8 +1339,11 @@ int main() {
 
 
 [&, var1]: Capture tất cả các biến theo cách tham chiếu, ngoại trừ biến var1 sẽ được capture theo cách sao chép.
+
 #include <iostream>
+
 using namespace std;
+
 int main() {
 
     int x = 5;
