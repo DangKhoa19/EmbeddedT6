@@ -1218,6 +1218,7 @@ int main()
 #include <iostream>
 using namespace std;
 int main() {
+
     int x = 5;
 
     auto lambda = [x]() {
@@ -1235,6 +1236,7 @@ int main() {
 #include <iostream>
 using namespace std;
 int main() {
+
     int x = 5;
 
     auto lambda = [&x]() {
@@ -1253,6 +1255,7 @@ int main() {
 #include <iostream>
 using namespace std;
 int main() {
+
     int x = 5;
     int y = 10;
 
@@ -1270,6 +1273,7 @@ int main() {
 #include <iostream>
 using namespace std;
 int main() {
+
     int x = 5;
     int y = 10;
 
@@ -1286,10 +1290,11 @@ int main() {
 [=, &var]: Kết hợp cả hai cách capture, lambda sẽ capture tất cả biến từ phạm vi bên ngoài theo cách sao chép, nhưng ngoại trừ biến var sẽ được capture theo cách tham chiếu.
 #include <iostream>
 using namespace std;
-int main() {
+int main() 
+{
+
     int x = 5;
     int y = 10;
-
     auto lambda = [=, &y]() {
         return x + y; // Lambda sử dụng x được sao chép và y thông qua tham chiếu
     };
@@ -1303,16 +1308,15 @@ int main() {
 #include <iostream>
 using namespace std;
 int main() {
+
     int x = 5;
     int y = 10;
-
     auto lambda = [x, y](int a, int b) {
         return x * y+a+b; 
         // Lambda chỉ sử dụng x và y được sao chép từ phạm vi bên ngoài
     };
-
    cout << lambda(1,2) << endl;
-
+   
     return 0;
 }
 
@@ -1321,6 +1325,7 @@ int main() {
 #include <iostream>
 using namespace std;
 int main() {
+
     int x = 5;
     int y = 10;
 
