@@ -1285,10 +1285,14 @@ int main() {
 }
 
 * List:
+   - List là một danh sách chứa các đối tượng (các nút (node) – lưu trữ các thông tin dữ liệu và địa chỉ của nút kế tiếp, nút trước đó) liên kết với nhau và cho phép chèn thêm hay xóa bất kì một đối tượng nào trong danh sách.
+
+
+
 
 
 * Hàm Lamda:
-   - Khái niệm: 
+   - Khái niệm: auto là một từ khóa được sử dụng để khai báo biến mà kiểu dữ liệu của nó được xác định tự động dựa trên giá trị mà biến đó được khởi tạo.
    - Cú pháp: [capture clause] (parameters) -> return-type {
                Định nghĩa của lambda function
               }
@@ -1401,6 +1405,26 @@ int main() {
     return 0;
 }
 
+kết quả 15
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+    int x = 5;
+    int y = 10;
+
+    auto lambda = [&]() {
+       x=10;y=15;
+        return x + y; // Lambda sử dụng x và y thông qua tham chiếu
+    };
+
+    cout << lambda() << endl;
+
+    return 0;
+}
+
 
 [=, &var]: Kết hợp cả hai cách capture, lambda sẽ capture tất cả biến từ phạm vi bên ngoài theo cách sao chép, nhưng ngoại trừ biến var sẽ được capture theo cách tham chiếu.
 
@@ -1421,6 +1445,31 @@ int main()
 
     return 0;
 }
+kết quả 15
+
+#include <iostream>
+
+using namespace std;
+
+int main() 
+{
+
+    int x = 5;
+    int y = 10;
+    auto lambda = [=, &y]() {
+    y =20
+        return x + y; // Lambda sử dụng x được sao chép và y thông qua tham chiếu
+    };
+    cout << y << endl;
+    cout << lambda() << endl;
+
+    return 0;
+}
+kết quả 20
+25
+
+
+
 
 [var1, var2]: Capture các biến cụ thể var1 và var2 theo cách sao chép.
 
@@ -1450,11 +1499,12 @@ using namespace std;
 
 int main() {
 
+    int z = 4;
     int x = 5;
     int y = 10;
 
     auto lambda = [&, x]() {
-        return x + y; 
+        return x + y+z; 
         // Lambda dùng x được sao chép và y thông qua tham chiếu
     };
 
@@ -1462,6 +1512,29 @@ int main() {
 
     return 0;
 }
+Kết quả 19
+
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+    int z = 4;
+    int x = 5;
+    int y = 10;
+
+     [&, x](int value) {
+             cout<< "value"<< value<<endl; 
+        // Lambda dùng x được sao chép và y thông qua tham chiếu
+    }(x);
+
+    return 0;
+}
+Kết quả 19
+
+
 
 
  - 
