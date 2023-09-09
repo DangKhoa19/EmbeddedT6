@@ -20,18 +20,25 @@ Các đặc trưng của OOP:
      + Không cho truy xuất 1 cách tùy tiện dữ liệu của lớp nội tại
      + Cơ chế đóng gói setter và setter giúp thay đổi dữ liệu và lấy dữ liệu, phá vỡ tính private. Cụ thể Setter là một phương thức
      được sử dụng để thay đổi giá trị của một thuộc tính, Getter là một phương thức được sử dụng để truy xuất giá trị của một thuộc tính. 
-Ví dụ: 
+Ví dụ:
+
 #include<iostream>
+
 using namespace std;
+
    class sinhvien
     
      {
    //thuộc tính (properties) đặc trưng của 1 thực thể, được bảo vệ ở private
 
    private:
+   
    string hoten;
+   
    string maso;
+   
    float diem_toan;
+   
    float diem_ly;
    
 //phương thức (method) hành vi, hành động thể hiện ra ngoài
@@ -41,11 +48,16 @@ using namespace std;
     void Nhap_Thong_Tin();   //{có thể định nghĩa bên trong class( không khuyến khích)   }
     void Xuat_Thong_Tin();
    // Cơ chế đóng gói setter (trình ghi) và getter(trình đọc)
+   
    string Getter_HoTen()
    {
+   
    return hoten;
+   
 }
+
 //setter họ tên
+
 void Setter(string HOTEN)
 {
 hoten = HOTEN;
@@ -54,28 +66,37 @@ hoten = HOTEN;
 // hàm tạo và hàm hủy
 
 sinhvien();
+
 ~sinhvien();
+
 void sinhvien::Nhap_Thong_Tin()
 {
 
 cout<<"\nNhap Ho ten";
+
 getline(cin, hoten); //gọi thuộc tính hoten trong class nội tại sinhvien
 
 cout<<"Nhap ma so sinh vien";
+
 getline(cin, maso); 
 
 cout<<"Nhap diemtoan";
+
 cin>>diem_toan; 
 
 cout<<"Nhap diem ly";
+
 cin>>diem_ly; 
 }
 void sinhvien::Xuat_Thong_tin()
 {
 
 cout <<"Ho ten"<<hoten <<endl;
+
 cout << "\nMa so: " << maso ;
+
 cout <<"Diem toan"<<diem_toan <<endl;
+
 cout <<"Diem ly"<<diem_ly <<endl;
 
 }
@@ -84,12 +105,19 @@ int main()
 {
 
 sinhvien nguyenvana;
+
 cout<<"Nhap thong tin sinh vien:"<<endl;
+
 nguyenvana.Nhap_Thong_Tin();
+
 //nguyenvana.Setter_HoTen("nguyen van b")
+
 //cout<<nguyenvana.Getter_HoTen();
+
 cout<<"Xuat thong tin sinh vien:"<<endl;
+
 nguyenvana.Xuat_Thong_Tin();
+
 return 0;
 }
 
@@ -104,11 +132,15 @@ return 0;
 Ví dụ 
 
 #include<iostream>
+
 #include<string>
+
 using namespace std;
 
 // Khai báo class nhân viên sửa ống nước
+
 class NhanVienSuaOngNuoc
+
 {
 private: 
 
@@ -173,8 +205,11 @@ public:
 };
 
 // Khai báo class nhân viên giao hàng
+
 class NhanVienGiaoHang
+
 {
+
 private:
 
     string hoten;
@@ -236,8 +271,8 @@ public:
     // Destructor: Khai báo destructor
     ~NhanVienGiaoHang() {}
 };
-
 // Khai báo class nhân viên xe ôm công nghệ
+
 class NhanVienXeOmCongNghe
 {
 
@@ -340,20 +375,33 @@ int main ()
  - Tính trừu tượng (Abstraction): trong code này thể hiện ở việc tạo các lớp NhanVienSuaOngNuoc, NhanVienGiaoHang, và NhanVienXeOmCongNghe đại diện cho các loại nhân viên khác nhau, và chúng đều có các phương thức chung như Nhap(), Xuat(), và Tinh_Tien_Luong() có thể sử dụng chúng để thực hiện các nhiệm vụ riêng biệt.
  - Tính đóng gói (Encapsulation) trong code nay thể hiện ở việc sử dụng các phạm vi truy cập (private, public) cho các thành phần của một lớp (đặc trưng quan trọng nhất của OOP), các thuộc tính properties hoten, tuoi, gioi_tinh, là private.
    + Cụ thể:
+     
 private:
+
 string hoten;
+
 int tuoi;
+
 string gioi_tinh;
+
 string dia_chi;
+
 string sdt;
+
+
 float chieu_cao;
+
 float can_nang;
+
 trong các lớp NhanVienSuaOngNuoc, NhanVienGiaoHang, và NhanVienXeOmCongNghe. Điều này đảm bảo rằng các thuộc tính này chỉ có thể truy cập từ bên trong lớp. 
 Ngoài ra, các phương thức method đặt ở phạm vi public (tương tự struct)
    + Cụ thể:
 public:
+
 void Nhap();
+
 void Xuat();
+
 float Tinh_Tien_Luong();
 
  - Tính trừu tượng (Inheritance):
@@ -365,12 +413,16 @@ kế thừa lại thì các thuộc tính lớp cha sẽ để phạm vi
   + Lợi ích: Tránh tình trạng dư thừa dữ liệu
 
 #include <iostream>
+
 #include <string>
+
 using namespace std;
 
 //Đây là khai báo một lớp cơ sở NhanVien, định nghĩa các thuộc tính và phương thức chung cho tất cả các nhân viên.
+
 class NhanVien
 {
+
 protected:
 
     string hoten;
@@ -380,7 +432,9 @@ protected:
     string sdt;
     float chieu_cao;
     float can_nang;
+    
 //protected: định nghĩa phạm vi truy cập của các thành viên được bảo vệ 
+
 //tức là chúng chỉ có thể truy cập từ các lớp con(dẫn xuất) của NhanVien.
 
 public:
@@ -756,12 +810,17 @@ mặc định.
      + capacity(): trả về kích thước thực sự vector đang lưu trữ (các phần tử). Nếu muốn xuất kích thước dung lượng thì soạn cũ pháp    capacity() * sizeof(KDL).
      + max.size(): trả về kích thước tối đa có thể chứa các phần tử của các container.
      + swap(<vector x>): hoán đổi các phần tử vector hiện và vector x cho nhau.
+     + 
 Ví dụ:
+
 #include<iostream>
+
 #include<vector>
+
 using namespace std;
 
 void Xuat_mang_vector(vector<int>arr)
+
 //vector<int> arr;: Tạo một vector rỗng có tên arr để lưu trữ các số nguyên.
 {
 
@@ -793,16 +852,24 @@ int main()
 }
 
 Kết quả:XUAT MANG
+
 0  1  2  3  4
+
 KICH THUOC THUC SU CUA MANG VECTOR HIEN TAI: 8
+
 KICH THUOC THUC SU CUA MANG VECTOR HIEN TAI (byte): 32
+
 Press any key to continue . . .
 
+
 #include<iostream>
+
 #include<vector>
+
 using namespace std;
 
 void Xuat_mang_vector(vector<int>arr)
+
 //vector<int> arr;: Tạo một vector rỗng có tên arr để lưu trữ các số nguyên.
 {
 
@@ -844,13 +911,19 @@ int main()
 }
 
 kẾT QUẢ PHAN TU DAU TIEN CUA MANG:      0
+
 PHAN TU CUOI CUNG CUA MANG:     4
+
                  XUAT MANG
 0  1  2  3  4
+
                  XUAT MANG
 0  1  2  3
+
 KICH THUOC THUC SU CUA MANG VECTOR HIEN TAI: 8
+
 KICH THUOC THUC SU CUA MANG VECTOR HIEN TAI (byte): 32
+
  SO LUONG PHAN TU CO THE CHUA DUOC TOI DA CUA VECTOR:  1073741823
 
 #include<iostream>
@@ -925,14 +998,20 @@ int main()
 
 
 Áp dụng vào bài toán nhân viên:
+
 #include <iostream>
+
 #include <string>
+
 #include <vector>
 
 using namespace std;
 
+
 // Lớp cơ sở NhanVien định nghĩa các thuộc tính và phương thức chung cho tất cả các nhân viên.
+
 class NhanVien {
+
 protected:
 
     string hoten;
@@ -950,7 +1029,9 @@ public:
 };
 
 // Hàm nhập thông tin nhân viên.
+
 void NhanVien::Nhap() {
+
 
     cout << "Nhap ho ten: ";
     cin.ignore();
@@ -973,6 +1054,7 @@ void NhanVien::Nhap() {
 }
 
 // Hàm xuất thông tin nhân viên.
+
 void NhanVien::Xuat() {
 
     cout << "Ho ten: " << hoten << endl;
@@ -985,7 +1067,9 @@ void NhanVien::Xuat() {
 }
 
 // Lớp con NhanVienSuaOngNuoc kế thừa từ lớp NhanVien.
+
 class NhanVienSuaOngNuoc : public NhanVien {
+
 private:
 
     float so_h_sua;
@@ -998,6 +1082,7 @@ public:
 };
 
 // Hàm nhập thông tin nhân viên sửa ống nước.
+
 void NhanVienSuaOngNuoc::Nhap() {
 
     NhanVien::Nhap();
@@ -1006,6 +1091,7 @@ void NhanVienSuaOngNuoc::Nhap() {
 }
 
 // Hàm xuất thông tin nhân viên sửa ống nước.
+
 void NhanVienSuaOngNuoc::Xuat() {
 
     NhanVien::Xuat();
@@ -1019,7 +1105,9 @@ float NhanVienSuaOngNuoc::Tinh_Tien_Luong() {
 }
 
 // Lớp con NhanVienGiaoHang kế thừa từ lớp NhanVien.
+
 class NhanVienGiaoHang : public NhanVien {
+
 private:
 
     int so_hang_giao;
@@ -1031,6 +1119,7 @@ public:
 };
 
 // Hàm nhập thông tin nhân viên giao hàng.
+
 void NhanVienGiaoHang::Nhap() {
 
     NhanVien::Nhap();
@@ -1039,6 +1128,7 @@ void NhanVienGiaoHang::Nhap() {
 }
 
 // Hàm xuất thông tin nhân viên giao hàng.
+
 void NhanVienGiaoHang::Xuat() {
 
     NhanVien::Xuat();
@@ -1052,7 +1142,9 @@ float NhanVienGiaoHang::Tinh_Tien_Luong() {
 }
 
 // Lớp con NhanVienXeOmCongNghe kế thừa từ lớp NhanVien.
+
 class NhanVienXeOmCongNghe : public NhanVien {
+
 private:
 
     float so_km;
@@ -1065,6 +1157,7 @@ public:
 };
 
 // Hàm nhập thông tin nhân viên xe ôm công nghệ.
+
 void NhanVienXeOmCongNghe::Nhap() {
 
     NhanVien::Nhap();
@@ -1073,6 +1166,7 @@ void NhanVienXeOmCongNghe::Nhap() {
 }
 
 // Hàm xuất thông tin nhân viên xe ôm công nghệ.
+
 void NhanVienXeOmCongNghe::Xuat() {
 
     NhanVien::Xuat();
@@ -1080,11 +1174,14 @@ void NhanVienXeOmCongNghe::Xuat() {
 }
 
 // Hàm tính lương của nhân viên xe ôm công nghệ.
+
 float NhanVienXeOmCongNghe::Tinh_Tien_Luong() {
+
     return so_km * 34000;
 }
 
 // Hàm tính tổng tiền lương của danh sách nhân viên.
+
 float TinhTongTienLuong(vector<NhanVien*>& ds) {
 
     double sum = 0;
@@ -1095,6 +1192,7 @@ float TinhTongTienLuong(vector<NhanVien*>& ds) {
 }
 
 // Hàm sắp xếp danh sách nhân viên theo thứ tự giảm dần theo lương.
+
 void SapXepDanhSachNhanVienGiamDanTheoLuong(vector<NhanVien*>& ds) {
 
     for (size_t i = 0; i < ds.size(); i++) {
@@ -1107,6 +1205,7 @@ void SapXepDanhSachNhanVienGiamDanTheoLuong(vector<NhanVien*>& ds) {
 }
 
 // Hàm hiển thị menu và quản lý chương trình.
+
 void Menu(vector<NhanVien*>& ds_nv) {
 
     int luachon;
